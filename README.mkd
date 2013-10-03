@@ -1,0 +1,48 @@
+# file-kit
+
+Filesystem manipulation for Clojure
+
+
+## Implemented Functions
+
+    cp
+    cp-r
+    directory?
+    exists?
+    file
+    file?
+    ls
+    mv
+    rm
+    rm-f
+    rm-r
+    rm-rf
+    size
+    touch
+    mkdir-p
+    chmod
+    create-temp-file
+
+## Usage
+
+    user=> (use 'file-kit.core)
+    nil
+    user=> (exists? "foo.txt")
+    false
+    user=> (touch "foo.txt")
+    nil
+    user=> (exists? "foo.txt")
+    true
+    user=> (rm "foo.txt")
+    nil
+    user=> (.getParent (file "/path/to/foo.txt"))
+    "/path/to"
+
+## Authors
+
+Maintained by Filippo Diotalevi <https://github.com/fdiotalevi>
+
+The code was originally extracted from <http://github.com/mmcgrana/clj-garden> 
+by Mark McGranaghan <mmcgrana@gmail.com>, and later updated by Nate Murray 
+<nate@natemurray.com>, Min Huang <min.huang@alumni.usc.edu> at <https://github.com/jashmenn/clj-file-utils>
+

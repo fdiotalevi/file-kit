@@ -1,0 +1,9 @@
+/autodoc
+/classes
+/lib
+/tmp
+/*.jar
+pom.xml
+target
+.lein-repl-history
+pom.xml.asc
