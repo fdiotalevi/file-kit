@@ -1,7 +1,8 @@
 (ns file-kit.core
   (:require [clojure.java.io :as io])
   (:import [java.io File])
-  (:import [org.apache.commons.io FileUtils])
+  (:import [org.apache.commons.io FileUtils]
+           [org.clojars.fdiotalevi.guava GuavaFiles])
   (:gen-class))
 
 
@@ -132,3 +133,9 @@
   "Create a temporary file with prefix and suffix (extension, like .txt)"
   [prefix suffix]
   (File/createTempFile prefix suffix))
+
+(defn create-temp-dir
+  "Create a temporary directory"
+  []
+  (GuavaFiles/createTempDir))
+

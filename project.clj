@@ -5,6 +5,7 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
   :dependencies
     [[commons-io/commons-io "2.4"]]
+  :java-source-paths ["src-java"]
   :dev-dependencies
     [[org.clojure/clojure "1.5.1"]
      [org.clojure/clojure-contrib "1.5.1"]])

@@ -4,7 +4,7 @@
   (:require [clojure.java.io :as io])
   (:import java.io.File))
 
-(def test-file (io/file "test" "clj_file_utils" "core_test.txt"))
+(def test-file (create-temp-file "core_test" ".txt"))
 
 (def tmp-dir (io/file "tmp"))
 

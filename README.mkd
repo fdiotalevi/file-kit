@@ -1,6 +1,8 @@
 # file-kit
 
-Filesystem manipulation for Clojure
+Filesystem manipulation for Clojure. It wraps Apache CommonIO
+and reususes some code from Guava Library, under
+the terms of the Apache Softawre License
 
 
 ## Implemented Functions
@@ -22,6 +24,7 @@ Filesystem manipulation for Clojure
     mkdir-p
     chmod
     create-temp-file
+    create-temp-dir
 
 ## Usage
 
