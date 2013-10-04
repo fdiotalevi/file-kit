@@ -142,8 +142,8 @@ Raise an exception if any deletion fails unless silently is true."
 
 (defn create-temp-file
   "Create a temporary file with prefix and suffix (extension, like .txt)"
-  [prefix suffix]
-  (File/createTempFile prefix suffix))
+  ([] (File/createTempFile "temp" ".tmp"))
+  ([prefix suffix]  (File/createTempFile prefix suffix)))
 
 (defn create-temp-dir
   "Create a temporary directory"

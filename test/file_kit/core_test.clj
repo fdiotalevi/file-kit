@@ -77,6 +77,20 @@
       (is (= (.lastModified test-file)
              (.lastModified to-file))))))
 
+(deftest can-rm
+  (let [newfile (create-temp-file)]
+    (do
+      (is (exists? newfile))
+      (rm newfile)
+      (is (not (exists? newfile))))))
+
+(deftest can-rm-rf
+  (let [newdir (create-temp-dir) newfile (io/file newdir "somefile")]
+    (do
+      (touch newfile)
+      (rm-rf newdir)
+      (is (not (exists? newfile))))))
+
 (deftest test-mv-file-to-file
   (let [from-file (io/file tmp-dir "from-file")
         to-file (io/file tmp-dir "to-file")]
