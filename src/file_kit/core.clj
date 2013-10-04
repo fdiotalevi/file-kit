@@ -6,6 +6,17 @@
   (:gen-class))
 
 
+(defn- delete-file-recursively
+  "Delete file f. If it's a directory, recursively delete all its contents.
+Raise an exception if any deletion fails unless silently is true."
+  [f & [silently]]
+  (let [f (io/file f)]
+    (if (.isDirectory f)
+      (doseq [child (.listFiles f)]
+        (delete-file-recursively child silently)))
+    (io/delete-file f silently)))
+
+
 (defmacro defun [name docstring args & body]
   `(do
      (defmulti ~name ~docstring class)
@@ -75,12 +86,12 @@
   "Remove a directory. The directory must be empty; will throw an exception
     if it is not or if the file cannot be deleted."
   [path]
-  (io/delete-file-recursively path))
+  (delete-file-recursively path))
 
 (defn rm-rf
   "Remove a directory, ignoring any errors."
   [path]
-  (io/delete-file-recursively path true))
+  (delete-file-recursively path true))
 
 (defn cp
   "Copy a file, preserving last modified time by default."
@@ -116,11 +127,6 @@
 
 
 (defn chmod
-  "Changes file permissions (UNIX only); for portability, consider pchmod."
-  [args path]
-  (sh "chmod" args (.getAbsolutePath (io/file path))))
-
-(defn pchmod
   "Change file permissions in a portable way."
   [path & {:keys [r w x]}]
   (let [file (io/file path)]

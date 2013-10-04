@@ -6,13 +6,13 @@
 
 (def test-file (create-temp-file "core_test" ".txt"))
 
-(def tmp-dir (io/file "tmp"))
+(def tmp-dir (create-temp-dir))
 
 (defn tmp-dir-fixture [f]
   (do
-    (io/delete-file-recursively tmp-dir true)
-    (.mkdirs tmp-dir)
+    (create-temp-dir)
     (f)))
+
 
 (deftest test-core
   (is (directory? "src"))
@@ -56,7 +56,7 @@
       (mkdir to-dir)
       (mv from-file to-dir)
       (is (not (exists? from-file)))
-      (is (file? (file to-dir (.getName from-file)))))))
+      (is (file? (io/file to-dir (.getName from-file)))))))
 
 (deftest test-mv-dir-to-dir
   (let [from-dir (io/file tmp-dir "from-dir")
