@@ -49,6 +49,19 @@
     (is (= 2 (count (ls new-tmp-dir))))
     (is (= 2 (count (ls (canonical-path new-tmp-dir)))))))
 
+(deftest test-touch
+  (let [file (io/file tmp-dir "test-touch")]
+    (do
+      (is (not (exists? file)))
+      (touch file)
+      (is (exists? file)))))
+
+(deftest can-mkdir
+  (let [new-dir (mkdir (io/file tmp-dir "newdir"))]
+    (do
+      (is (exists? new-dir))
+      (is (directory? new-dir)))))
+
 (deftest test-cp
   (let [to-file (io/file tmp-dir "test-cp")]
     (do
@@ -89,12 +102,5 @@
       (is (not (exists? from-dir)))
       (is (exists? to-dir))
       (is (directory? to-dir)))))
-
-(deftest test-touch
-  (let [file (io/file tmp-dir "test-touch")]
-    (do
-      (is (not (exists? file)))
-      (touch file)
-      (is (exists? file)))))
 
 (use-fixtures :each tmp-dir-fixture)

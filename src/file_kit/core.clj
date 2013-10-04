@@ -65,7 +65,10 @@ Raise an exception if any deletion fails unless silently is true."
 (defn mkdir
   "Create a directory."
   [dir]
-  (.mkdir (io/file dir)))
+  (let [file-dir (io/file dir)]
+    (do
+      (.mkdir file-dir)
+      file-dir)))
 
 (defn mkdir-p
   "Create a directory and all parent directories if they do not exist."
