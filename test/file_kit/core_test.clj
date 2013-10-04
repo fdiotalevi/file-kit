@@ -15,6 +15,10 @@
     (create-temp-dir)
     (f)))
 
+(deftest can-spit-out-canonical-path
+  (is (not (nil? (canonical-path tmp-dir))))
+  (is (not (nil? (canonical-path test-file)))))
+
 (deftest can-recognise-a-file
   (is (file? test-file))
   (is (file? (canonical-path test-file))))
@@ -28,7 +32,6 @@
   (is (exists? test-file))
   (is (not (exists? (io/file "hgjds786ghjkfsd"))))
   (is (not (exists? nil))))
-
 
 (deftest test-size
   (is (= 11 (size test-file)))

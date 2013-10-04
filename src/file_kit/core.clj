@@ -24,6 +24,11 @@ Raise an exception if any deletion fails unless silently is true."
      (defmethod ~name String ~args (~name (io/file ~@args)))
      (defmethod ~name :default ~args false)))
 
+(defn canonical-path
+  "Returns the canonical path of the file or directory."
+  [path]
+  (.getCanonicalPath (io/file path)))
+
 (defun file?
   "Returns true if the path is a file; false otherwise."
   [path]
@@ -66,11 +71,6 @@ Raise an exception if any deletion fails unless silently is true."
   "Create a directory and all parent directories if they do not exist."
   [dir]
   (.mkdirs (io/file dir)))
-
-(defn canonical-path
-  "Returns the canonical path of the file or directory."
-  [path]
-  (.getCanonicalPath (io/file path)))
 
 (defn rm
   "Remove a file. Will throw an exception if the file cannot be deleted."
