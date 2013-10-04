@@ -39,6 +39,11 @@
   (is (= 11 (size test-file)))
   (is (= 11 (size (canonical-path test-file)))))
 
+(deftest user-has-home
+  (is (not (nil? HOME))))
+
+(deftest can-ls)
+
 (deftest test-cp
   (let [to-file (io/file tmp-dir "test-cp")]
     (do

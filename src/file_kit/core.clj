@@ -145,3 +145,4 @@ Raise an exception if any deletion fails unless silently is true."
   []
   (GuavaFiles/createTempDir))
 
+(def HOME (System/getProperty "user.home"))

@@ -28,6 +28,11 @@ to create the best in breed file utility for Clojure.
     create-temp-file
     create-temp-dir
 
+## Useful variables
+
+   HOME 
+
+
 ## Authors
 
 Maintained by Filippo Diotalevi <https://github.com/fdiotalevi>
