@@ -62,6 +62,12 @@
       (is (exists? new-dir))
       (is (directory? new-dir)))))
 
+(deftest can-makdir-p
+  (let [new-dir2 (mkdir-p (io/file tmp-dir "newdir2" "newdir3"))]
+    (do
+      (is (exists? new-dir2))
+      (is (directory? new-dir2)))))
+
 (deftest test-cp
   (let [to-file (io/file tmp-dir "test-cp")]
     (do

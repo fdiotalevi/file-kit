@@ -73,7 +73,9 @@ Raise an exception if any deletion fails unless silently is true."
 (defn mkdir-p
   "Create a directory and all parent directories if they do not exist."
   [dir]
-  (.mkdirs (io/file dir)))
+  (let [file-dir (io/file dir)]
+    (.mkdirs file-dir)
+    file-dir))
 
 (defn rm
   "Remove a file. Will throw an exception if the file cannot be deleted."
