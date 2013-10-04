@@ -4,7 +4,9 @@
   (:require [clojure.java.io :as io])
   (:import java.io.File))
 
-(def test-file (create-temp-file "core_test" ".txt"))
+(def test-file (let [tf (create-temp-file "core_test" ".txt")]
+                 (spit tf "12345678901")
+                 tf))
 
 (def tmp-dir (create-temp-dir))
 
