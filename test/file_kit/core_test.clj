@@ -25,11 +25,13 @@
 
 (deftest can-recognise-a-dir
   (is (directory? tmp-dir))
+  (is (directory? (canonical-path tmp-dir)))
   (is (directory? (io/file "src")))
   (is (not (directory? nil))))
 
 (deftest can-recognise-existence
   (is (exists? test-file))
+  (is (exists? (canonical-path test-file)))
   (is (not (exists? (io/file "hgjds786ghjkfsd"))))
   (is (not (exists? nil))))
 
