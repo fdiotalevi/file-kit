@@ -30,7 +30,7 @@ to create the best in breed file utility for Clojure.
 
 ## Useful variables
 
-   HOME 
+    HOME 
 
 
 ## Authors

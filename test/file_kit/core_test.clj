@@ -42,7 +42,12 @@
 (deftest user-has-home
   (is (not (nil? HOME))))
 
-(deftest can-ls)
+(deftest can-ls
+  (let [new-tmp-dir (create-temp-dir)]
+    (spit (io/file new-tmp-dir "aaaa") "aaa")
+    (spit (io/file new-tmp-dir "bbbb") "bbb")
+    (is (= 2 (count (ls new-tmp-dir))))
+    (is (= 2 (count (ls (canonical-path new-tmp-dir)))))))
 
 (deftest test-cp
   (let [to-file (io/file tmp-dir "test-cp")]
