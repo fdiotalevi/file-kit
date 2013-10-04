@@ -15,15 +15,20 @@
     (create-temp-dir)
     (f)))
 
-
-(deftest test-core
-  (is (directory? "src"))
-  (is (directory? (io/file "src")))
-  (is (not (directory? nil)))
+(deftest can-recognise-a-file
   (is (file? test-file))
-  (is (file? (canonical-path test-file)))
+  (is (file? (canonical-path test-file))))
+
+(deftest can-recognise-a-dir
+  (is (directory? tmp-dir))
+  (is (directory? (io/file "src")))
+  (is (not (directory? nil))))
+
+(deftest can-recognise-existence
   (is (exists? test-file))
+  (is (not (exists? (io/file "hgjds786ghjkfsd"))))
   (is (not (exists? nil))))
+
 
 (deftest test-size
   (is (= 11 (size test-file)))

@@ -1,8 +1,10 @@
 # file-kit
 
-Filesystem manipulation for Clojure. It wraps Apache CommonIO
-and reususes some code from Guava Library, under
-the terms of the Apache Softawre License
+Filesystem manipulation for Clojure, under heavy development.
+
+It wraps and reuses code from popular libraries like Apache Common IO
+and guava-libraries  (everything under the terms of the Apache Softawre License)
+to create the best in breed file utility for Clojure.
 
 
 ## Implemented Functions
@@ -25,21 +27,6 @@ the terms of the Apache Softawre License
     chmod
     create-temp-file
     create-temp-dir
-
-## Usage
-
-    user=> (use 'file-kit.core)
-    nil
-    user=> (exists? "foo.txt")
-    false
-    user=> (touch "foo.txt")
-    nil
-    user=> (exists? "foo.txt")
-    true
-    user=> (rm "foo.txt")
-    nil
-    user=> (.getParent (file "/path/to/foo.txt"))
-    "/path/to"
 
 ## Authors
 

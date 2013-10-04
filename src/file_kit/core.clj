@@ -39,6 +39,11 @@ Raise an exception if any deletion fails unless silently is true."
   [path]
   (.exists ^File path))
 
+(defn size
+  "Returns the size in bytes of a file."
+  [file]
+  (.length (io/file file)))
+
 (defn ls
   "List files in a directory."
   [dir]
@@ -66,11 +71,6 @@ Raise an exception if any deletion fails unless silently is true."
   "Returns the canonical path of the file or directory."
   [path]
   (.getCanonicalPath (io/file path)))
-
-(defn size
-  "Returns the size in bytes of a file."
-  [file]
-  (.length (io/file file)))
 
 (defn rm
   "Remove a file. Will throw an exception if the file cannot be deleted."
