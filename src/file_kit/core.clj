@@ -150,4 +150,8 @@ Raise an exception if any deletion fails unless silently is true."
   []
   (GuavaFiles/createTempDir))
 
+(defn cat
+  [& files]
+  (reduce str (map slurp files)))
+
 (def HOME (System/getProperty "user.home"))

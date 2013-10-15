@@ -9,6 +9,7 @@ to create the best in breed file utility for Clojure.
 
 ## Implemented Functions
 
+    cat
     cp
     cp-r
     directory?
