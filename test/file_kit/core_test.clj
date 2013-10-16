@@ -8,6 +8,10 @@
                  (spit tf "12345678901")
                  tf))
 
+(def test-file-with-cr (let [tf (create-temp-file "core_test" ".txt")]
+                 (spit tf "12345678901\n")
+                 tf))
+
 (def tmp-dir (create-temp-dir))
 
 (defn tmp-dir-fixture [f]
@@ -123,11 +127,20 @@
       (is (exists? to-dir))
       (is (directory? to-dir)))))
 
-
 (deftest can-cat
   (let [f1 test-file f2 test-file]
     (is (= "12345678901" (cat f1)))
     (is (= "1234567890112345678901" (cat f1 f2)))))
+
+(deftest can-split-in-lines
+  (let [f1 test-file-with-cr f2 test-file-with-cr]
+    (is (= '("12345678901") (lines f1)))
+    (is (= '("12345678901" "12345678901") (lines f1 f2)))))
+
+(deftest can-count-lines
+  (let [f1 test-file-with-cr f2 test-file]
+    (is (= 1 (wc-l f1)))
+    (is (= 2 (wc-l f1 f2)))))
 
 (use-fixtures :each tmp-dir-fixture)
 
