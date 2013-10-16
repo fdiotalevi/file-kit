@@ -123,5 +123,11 @@
       (is (exists? to-dir))
       (is (directory? to-dir)))))
 
+
+(deftest can-cat
+  (let [f1 test-file f2 test-file]
+    (is (= "12345678901" (cat f1)))
+    (is (= "1234567890112345678901" (cat f1 f2)))))
+
 (use-fixtures :each tmp-dir-fixture)
 

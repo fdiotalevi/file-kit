@@ -10,12 +10,16 @@ to create the best in breed file utility for Clojure.
 ## Implemented Functions
 
     cat
+    chmod
     cp
     cp-r
+    create-temp-dir
+    create-temp-file
     directory?
     exists?
     file
     file?
+    lines
     ls
     mv
     rm
@@ -25,9 +29,7 @@ to create the best in breed file utility for Clojure.
     size
     touch
     mkdir-p
-    chmod
-    create-temp-file
-    create-temp-dir
+    wc-l
 
 ## Useful variables
 

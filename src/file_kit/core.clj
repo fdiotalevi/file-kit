@@ -154,4 +154,12 @@ Raise an exception if any deletion fails unless silently is true."
   [& files]
   (reduce str (map slurp files)))
 
+(defn lines
+  [& files]
+  (seq (.split (apply cat files) "\n")))
+
+(defn wc-l
+  [& files]
+  (count (apply lines files)))
+
 (def HOME (System/getProperty "user.home"))
