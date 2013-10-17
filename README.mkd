@@ -2,6 +2,8 @@
 
 Filesystem manipulation for Clojure, under heavy development.
 
+You can find the documentation at http://fdiotalevi.github.io/file-kit/
+
 It wraps and reuses code from popular libraries like Apache Common IO
 and guava-libraries  (everything under the terms of the Apache Softawre License)
 to create the best in breed file utility for Clojure.
