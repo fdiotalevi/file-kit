@@ -13,13 +13,6 @@
            [org.clojars.fdiotalevi.guava GuavaFiles])
   (:gen-class))
 
-(defmacro defun [name docstring args & body]
-  `(do
-     (defmulti ~name ~docstring class)
-     (defmethod ~name File ~args ~@body)
-     (defmethod ~name String ~args (~name (io/file ~@args)))
-     (defmethod ~name :default ~args false)))
-
 ;; # Get information about file(s) 
 ;;
 ;; Use one of the following functions to get information
@@ -33,20 +26,20 @@
   [path]
   (.getCanonicalPath (io/file path)))
 
-(defun file?
+(defn file?
   "Returns true if the `path` is a file; false otherwise."
   [path]
-  (.isFile ^File path))
+  (.isFile (io/file path)))
 
-(defun directory?
+(defn directory?
   "Returns true if the `path` is a directory; false otherwise."
   [path]
-  (.isDirectory ^File path))
+  (.isDirectory (io/file path)))
 
-(defun exists?
+(defn exists?
   "Returns true if `path` exists; false otherwise."
   [path]
-  (.exists ^File path))
+  (.exists (io/file path)))
 
 (defn size
   "Returns the size in bytes of `file`."
