@@ -1,10 +1,23 @@
 ;; ## Simple file manipulation in Clojure
 ;;
 ;; file-kit provides several functions to operate on files.
+;; The documentation is available at http://fdiotalevi.github.io/file-kit/
 ;;
 ;; It wraps and reuses code from popular libraries like Apache Common IO and 
 ;; guava-libraries (everything under the terms of the Apache Softawre License) 
 ;; to create the best in breed file utility for Clojure.
+;;
+;; to start using it, add
+;;
+;; `[org.clojars.fdiotalevi/file-kit "0.2.0-SNAPSHOT"]`
+;;
+;; to the dependencies section of your `project.clj` file, and
+;;
+;; `(:use [file-kit.core])`
+;;
+;; in your clojure scripts
+;;
+
 
 (ns file-kit.core
   (:require [clojure.java.io :as io])

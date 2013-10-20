@@ -3031,24 +3031,29 @@ net.brehaut.ClojureTools = (function (SH) {
 </script><title>org.clojars.fdiotalevi/file-kit -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">org.clojars.fdiotalevi/file-kit</h1><h2 class="project-version">0.2.0-SNAPSHOT</h2><br />
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.5.1</td></tr><tr><td class="dep-name">commons-io/commons-io</td><td class="dotted"><hr /></td><td class="dep-version">2.4</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#file-kit.core">file-kit.core</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#file-kit.core" name="file-kit.core"><h1 class="project-name">file-kit.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Simple file manipulation in Clojure</h2>
 
-<p>file-kit provides several functions to operate on files.</p>
+<p>file-kit provides several functions to operate on files.
+The documentation is available at http://fdiotalevi.github.io/file-kit/</p>
 
 <p>It wraps and reuses code from popular libraries like Apache Common IO and 
 guava-libraries (everything under the terms of the Apache Softawre License) 
 to create the best in breed file utility for Clojure.</p>
+
+<p>to start using it, add</p>
+
+<p><code>[org.clojars.fdiotalevi/file-kit "0.2.0-SNAPSHOT"]</code></p>
+
+<p>to the dependencies section of your <code>project.clj</code> file, and</p>
+
+<p><code>(:use [file-kit.core])</code></p>
+
+<p>in your clojure scripts</p>
 </td><td class="codes"></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns file-kit.core
   (:require [clojure.java.io :as io])
   (:import [java.io File])
   (:import [org.apache.commons.io FileUtils]
            [org.clojars.fdiotalevi.guava GuavaFiles])
-  (:gen-class))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defmacro defun [name docstring args &amp; body]
-  `(do
-     (defmulti ~name ~docstring class)
-     (defmethod ~name File ~args ~@body)
-     (defmethod ~name String ~args (~name (io/file ~@args)))
-     (defmethod ~name :default ~args false)))</pre></td></tr><tr><td class="docs"><h1>Get information about file(s)</h1>
+  (:gen-class))</pre></td></tr><tr><td class="docs"><h1>Get information about file(s)</h1>
 
 <p>Use one of the following functions to get information
 about one or more files, or one directory</p>
@@ -3059,15 +3064,15 @@ or using a File object</p>
 </td><td class="codes"><pre class="brush: clojure">(defn canonical-path
   [path]
   (.getCanonicalPath (io/file path)))</pre></td></tr><tr><td class="docs"><p>Returns true if the <code>path</code> is a file; false otherwise.</p>
-</td><td class="codes"><pre class="brush: clojure">(defun file?
+</td><td class="codes"><pre class="brush: clojure">(defn file?
   [path]
-  (.isFile ^File path))</pre></td></tr><tr><td class="docs"><p>Returns true if the <code>path</code> is a directory; false otherwise.</p>
-</td><td class="codes"><pre class="brush: clojure">(defun directory?
+  (.isFile (io/file path)))</pre></td></tr><tr><td class="docs"><p>Returns true if the <code>path</code> is a directory; false otherwise.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn directory?
   [path]
-  (.isDirectory ^File path))</pre></td></tr><tr><td class="docs"><p>Returns true if <code>path</code> exists; false otherwise.</p>
-</td><td class="codes"><pre class="brush: clojure">(defun exists?
+  (.isDirectory (io/file path)))</pre></td></tr><tr><td class="docs"><p>Returns true if <code>path</code> exists; false otherwise.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn exists?
   [path]
-  (.exists ^File path))</pre></td></tr><tr><td class="docs"><p>Returns the size in bytes of <code>file</code>.</p>
+  (.exists (io/file path)))</pre></td></tr><tr><td class="docs"><p>Returns the size in bytes of <code>file</code>.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn size
   [file]
   (.length (io/file file)))</pre></td></tr><tr><td class="docs"><p>Read the content of one or multiple files</p>
