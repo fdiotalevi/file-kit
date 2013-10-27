@@ -79,6 +79,12 @@
   [dir]
   (seq (.listFiles (io/file dir))))
 
+(defn grep
+  "Simple implementation of grep that returns the list of lines that
+   contain the specified `pattern`"
+  [pattern file]
+  (filter #(> (.indexOf % pattern) -1) (lines file)))
+
 ;; # Modify files
 ;;
 ;; Following a set of functions to write, modify or remove files

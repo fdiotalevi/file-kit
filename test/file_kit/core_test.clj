@@ -140,5 +140,10 @@
     (is (= 1 (wc-l f1)))
     (is (= 2 (wc-l f1 f2)))))
 
+(deftest can-grep
+  (let [f1 test-file]
+    (is (= 0 (count (grep "dfdsf" f1))))
+    (is (= 1 (count (grep "123" f1))))))
+
 (use-fixtures :each tmp-dir-fixture)
 
