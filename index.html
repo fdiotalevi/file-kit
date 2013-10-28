@@ -3087,7 +3087,11 @@ or using a File object</p>
   (count (apply lines files)))</pre></td></tr><tr><td class="docs"><p>List files in a directory.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn ls
   [dir]
-  (seq (.listFiles (io/file dir))))</pre></td></tr><tr><td class="docs"><h1>Modify files</h1>
+  (seq (.listFiles (io/file dir))))</pre></td></tr><tr><td class="docs"><p>Simple implementation of grep that returns the list of lines that
+   contain the specified <code>pattern</code></p>
+</td><td class="codes"><pre class="brush: clojure">(defn grep
+  [pattern file]
+  (filter #(&gt; (.indexOf % pattern) -1) (lines file)))</pre></td></tr><tr><td class="docs"><h1>Modify files</h1>
 
 <p>Following a set of functions to write, modify or remove files
 and directory</p>
